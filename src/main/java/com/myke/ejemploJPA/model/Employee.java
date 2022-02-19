@@ -1,6 +1,7 @@
 package com.myke.ejemploJPA.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Objects;
 
 @Entity
@@ -20,14 +21,26 @@ public class Employee {
     @Column(length = 10, nullable = false, unique = true) //es unico y 10 caracteres
     private String employeeid;
 
+    @ManyToOne(optional = false) //tipo de union de tablas. 1 role puede estar asociado a muchos empleados
+    @JoinColumn(name = "id_role") //indica un foreign key y el nombre del field sera id_role
+    private Role role;
+
+    /*@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "employee_project",
+                joinColumns = { @JoinColumn(name = "employee_id") },
+                inverseJoinColumns = { @JoinColumn(name = "project_id") })
+    private ArrayList<Project> projects = new ArrayList<Project>();*/
+
+
     //CONSTRUCTOR
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String employeeid) {
+    public Employee(String firstName, String lastName, String employeeid, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeid = employeeid;
+        this.role = role;
     }
 
     //GETTER && SETTER
@@ -62,6 +75,22 @@ public class Employee {
     public void setEmployeeid(String employeeid) {
         this.employeeid = employeeid;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    /*public ArrayList<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(ArrayList<Project> projects) {
+        this.projects = projects;
+    }*/
 
     //Equals and hashCode
     @Override

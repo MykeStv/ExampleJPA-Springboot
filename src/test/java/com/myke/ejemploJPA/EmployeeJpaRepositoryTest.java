@@ -1,6 +1,7 @@
 package com.myke.ejemploJPA;
 
 import com.myke.ejemploJPA.model.Employee;
+import com.myke.ejemploJPA.model.Role;
 import com.myke.ejemploJPA.repository.IEmployeeJpaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,10 @@ public class EmployeeJpaRepositoryTest {
 
     @Test
     public void saveEmployee() {
-        Employee john = new Employee("John", "Smith", "empl123");
-        Employee claire = new Employee("Claire", "Mitz", "empl124");
+        Role rol1 = new Role("Admin");
+        Role rol2 = new Role("Engineer");
+        Employee john = new Employee("John", "Smith", "empl123", rol1);
+        Employee claire = new Employee("Claire", "Mitz", "empl124", rol2);
 
         repo.save(john);
         repo.save(claire);
