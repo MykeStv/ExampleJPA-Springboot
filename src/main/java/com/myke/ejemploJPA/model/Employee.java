@@ -37,11 +37,12 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String employeeid, Role role) {
+    public Employee(String firstName, String lastName, String employeeid, Role role, List<Project> project) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeid = employeeid;
         this.role = role;
+        this.projects = project;
     }
 
     //GETTER && SETTER
@@ -85,13 +86,13 @@ public class Employee {
         this.role = role;
     }
 
-    /*public ArrayList<Project> getProjects() {
+    public List<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(ArrayList<Project> projects) {
+    public void setProjects(List<Project> projects) {
         this.projects = projects;
-    }*/
+    }
 
     //Equals and hashCode
     @Override
