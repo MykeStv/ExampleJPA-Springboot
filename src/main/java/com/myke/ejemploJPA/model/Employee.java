@@ -2,6 +2,7 @@ package com.myke.ejemploJPA.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -25,11 +26,11 @@ public class Employee {
     @JoinColumn(name = "id_role") //indica un foreign key y el nombre del field sera id_role
     private Role role;
 
-    /*@ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "employee_project",
                 joinColumns = { @JoinColumn(name = "employee_id") },
                 inverseJoinColumns = { @JoinColumn(name = "project_id") })
-    private ArrayList<Project> projects = new ArrayList<Project>();*/
+    private List<Project> projects = new ArrayList<Project>();
 
 
     //CONSTRUCTOR
