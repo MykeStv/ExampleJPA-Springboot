@@ -15,26 +15,31 @@ public class RoleController {
     @Autowired
     private RoleService roleService;
 
+    //Metodo para obtener todos los roles
     @GetMapping
     public List<Role> getRoles() {
         return roleService.getRoles();
     }
 
+    //Metodo para obtener los roles por id
     @GetMapping(path = "/{id}")
     public Optional<Role> getRole(@PathVariable("id") Long id) {
         return this.roleService.getRoleById(id);
     }
 
+    //Metodo para guardar un rol
     @PostMapping(path = "/add")
     public Role addRole(@RequestBody Role role) {
         return roleService.addRole(role);
     }
 
+    //Metodo para actualizar el rol
     @PutMapping(path = "/update")
     public Role updateRole(@RequestBody Role role) {
         return this.roleService.addRole(role);
     }
 
+    //Metodo para eliminar el rol por id
     @DeleteMapping(path = "/delite/{id}")
     public String deleteRole(@PathVariable("id") Long id) {
         if (this.roleService.deleteRole(id)){
